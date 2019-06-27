@@ -1,6 +1,6 @@
 //
 //
-//Update 26/06/2019
+//Update 27/06/2019
 //
 //
 //
@@ -50,7 +50,7 @@ isLoading
 
 split
 {
-	if((current.iLevel == 13) || (current.iLevel == 15) || (current.iLevel == 29) || (current.iLevel == 42) || (current.iLevel == 51))
+	if((current.iLevel == 13) || (current.iLevel == 15) || (current.iLevel == 29) ||(current.iLevel == 30) || (current.iLevel == 42) || (current.iLevel == 51))
 	{
 		return false;
 	}
