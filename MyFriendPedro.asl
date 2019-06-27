@@ -1,11 +1,11 @@
 //
 //
-//Update 27/06/2019
+//Update 27/06/2019 game version 1.02
 //
 //
 //
 
-state("My Friend Pedro - Blood Bullets Bananas")
+/*state("My Friend Pedro - Blood Bullets Bananas", "1.0")
 {
 	 //
 	 //UnityPlayer.dll 74 ?? 48 8B 41 10 48 85 C0 74 ?? 89 90 ?? ?? ?? ?? 48 83 C4 28 (+13)
@@ -13,26 +13,39 @@ state("My Friend Pedro - Blood Bullets Bananas")
 	 //
 	 
 	 int isMenu: "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
-	 //
+
+	 byte isLoading: "UnityPlayer.dll", 0x144BCE5;
+	 int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x6C;
+}*/
+
+state("My Friend Pedro - Blood Bullets Bananas")
+{
+	//
+	 //UnityPlayer.dll 74 ?? 48 8B 41 10 48 85 C0 74 ?? 89 90 ?? ?? ?? ?? 48 83 C4 28 (+13)
+	 //UnityPlayer.dll F3 0F 10 78 ?? 48 3B DF 74 ?? 83 B9 ?? ?? ?? ?? 00 75 ?? (+12)
 	 //
 	 
+	 int isMenu: "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 	 byte isLoading: "UnityPlayer.dll", 0x144BCE5;
-	 //
-	 // v1.0.0
-	 int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x6C; 
-
-	 // Experimental 
-	 // int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x70;
-	 //
-	 //
+	 int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x70;
 }
 
-/*
-init
+
+/*init
 {
-	int size = modules.First().ModuleMemorySize;
-	if (size == 671744) //0xA4000
-		version = "1.0";	
+	
+	int test: "Assembly-UnityScript.dll", 0x0;
+	print(""+test.toString());
+	int size = modules.First(x => x.ModuleName == "Assembly-UnityScript.dll").ModuleMemorySize;
+
+	if (size == 816640)
+	{
+		version = "1.0";
+	}
+	if(size == 822272)
+	{
+		version = "1.02";
+	}
 	if (version == "")
 		print("Incompatible game version\nMemory size: " + size.ToString());
 }
