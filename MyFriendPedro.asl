@@ -11,18 +11,32 @@ state("My Friend Pedro - Blood Bullets Bananas")
 	 //UnityPlayer.dll 74 ?? 48 8B 41 10 48 85 C0 74 ?? 89 90 ?? ?? ?? ?? 48 83 C4 28 (+13)
 	 //UnityPlayer.dll F3 0F 10 78 ?? 48 3B DF 74 ?? 83 B9 ?? ?? ?? ?? 00 75 ?? (+12)
 	 //
+	 
 	 int isMenu: "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 	 //
 	 //
+	 
 	 byte isLoading: "UnityPlayer.dll", 0x144BCE5;
 	 //
 	 // v1.0.0
 	 int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x6C; 
+
 	 // Experimental 
 	 // int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x70;
 	 //
 	 //
 }
+
+/*
+init
+{
+	int size = modules.First().ModuleMemorySize;
+	if (size == 671744) //0xA4000
+		version = "1.0";	
+	if (version == "")
+		print("Incompatible game version\nMemory size: " + size.ToString());
+}
+*/
 
 startup
 {
