@@ -1,8 +1,6 @@
 //
 //
-//Update 27/06/2019 game version 1.02
-//
-//
+//Update 28/06/2019 game version 1.02
 //
 
 state("My Friend Pedro - Blood Bullets Bananas")
@@ -18,27 +16,6 @@ state("My Friend Pedro - Blood Bullets Bananas")
 	 int iLevel: "mono.dll", 0x264110, 0xA8, 0x18, 0x70;
 }
 
-
-/*init
-{
-	
-	int test: "Assembly-UnityScript.dll", 0x0;
-	print(""+test.toString());
-	int size = modules.First(x => x.ModuleName == "Assembly-UnityScript.dll").ModuleMemorySize;
-
-	if (size == 816640)
-	{
-		version = "1.0";
-	}
-	if(size == 822272)
-	{
-		version = "1.02";
-	}
-	if (version == "")
-		print("Incompatible game version\nMemory size: " + size.ToString());
-}
-*/
-
 startup
 {
 	settings.Add("AllSplits", false, "Enable all autosplits including for Tutorial subsplits");
@@ -52,13 +29,12 @@ isLoading
 
 split
 {
-	if((current.iLevel == 13) ||
-	   (current.iLevel == 15) ||
-	   (current.iLevel == 29) ||
-	   (current.iLevel == 30) ||
-	   (current.iLevel == 40) ||
-	   (current.iLevel == 42) ||
-	   (current.iLevel == 51))
+
+	/*================Removed splits==============================*/
+	if((current.iLevel == 13) || 																	 // 1.7.5 Take bike
+	(current.iLevel    == 30) || 																	 // 4.0.5 Cut scene with arcade automat
+	(current.iLevel    == 40) || 																	 // 4.9.5 Jump into train
+	(current.iLevel    == 51))                    								 // Cut scene with E pressing
 	{
 			return false;
 	}
