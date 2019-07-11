@@ -23,6 +23,15 @@ state("My Friend Pedro - Blood Bullets Bananas") {
 
 startup {
 
+    settings.Add("StartGroup", true, "Start Timer At");
+    settings.Add("TutorialLevel_start", false, "Tutorial", "StartGroup");
+    settings.Add("OldTownlLevel_start", false, "Old Town", "StartGroup");
+    settings.Add("DistrictNullLevel_start", false, "District Null", "StartGroup");
+    settings.Add("PedroWorldLevel_start", false, "Pedro World", "StartGroup");
+    settings.Add("SewerLevel_start", false, "The Sewer", "StartGroup");
+    settings.Add("InternetLevel_start", false, "The Internet", "StartGroup");
+    settings.Add("PedroBossFightLevel_start", false, "The End", "StartGroup");
+
   	/*    ======================================================================    */ 
     
     settings.Add("TutorialGroup", true, "Tutorial");
@@ -96,14 +105,6 @@ startup {
     settings.Add("PedroBossFightLevel", false, "The End (Pedro Boss Fight)");
 
     /*    ======================================================================    */ 
-    settings.Add("StartGroup", true, "Start Timer At");
-    settings.Add("TutorialLevel_start", false, "Tutorial", "StartGroup");
-    settings.Add("OldTownlLevel_start", false, "Old Town", "StartGroup");
-    settings.Add("DistrictNullLevel_start", false, "District Null", "StartGroup");
-    settings.Add("PedroWorldLevel_start", false, "Pedro World", "StartGroup");
-    settings.Add("SewerLevel_start", false, "The Sewer", "StartGroup");
-    settings.Add("InternetLevel_start", false, "The Internet", "StartGroup");
-    settings.Add("PedroBossFightLevel_start", false, "The End", "StartGroup");
 }
 
 isLoading {
