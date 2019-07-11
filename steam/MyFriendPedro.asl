@@ -24,7 +24,7 @@ state("My Friend Pedro - Blood Bullets Bananas") {
 startup {
 
     settings.Add("StartGroup", true, "Start Timer At");
-    settings.Add("TutorialLevel_start", false, "Tutorial", "StartGroup");
+    settings.Add("TutorialLevel_start", true, "Tutorial", "StartGroup");
     settings.Add("OldTownlLevel_start", false, "Old Town", "StartGroup");
     settings.Add("DistrictNullLevel_start", false, "District Null", "StartGroup");
     settings.Add("PedroWorldLevel_start", false, "Pedro World", "StartGroup");
