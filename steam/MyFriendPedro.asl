@@ -1,5 +1,5 @@
     /*
-    # Update 19/10/2019 game version 1.03
+    # Update 18/10/2019 game version 1.03
     #
     #
     #
@@ -44,11 +44,11 @@ gameTime {
 
 split {
      if (current.iLevel == 14 ||
-        current.iLevel == 16 ||
-        current.iLevel == 30 ||
-        current.iLevel == 41 ||
-        current.iLevel == 43 ||
-        current.iLevel == 52) {
+        current.iLevel  == 16  ||
+        current.iLevel  == 31  ||
+        current.iLevel  == 41  ||
+        current.iLevel  == 43  ||
+        current.iLevel  == 52) {
         return false;
     }
     if (current.chapterTime - 1 < old.chapterTime){
@@ -68,4 +68,8 @@ start {
 isLoading {
     return current.isMenu;
 
+}
+
+exit {
+    timer.IsGameTimePaused = true;
 }
