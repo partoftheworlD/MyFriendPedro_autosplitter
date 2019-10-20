@@ -4,7 +4,7 @@
 
 After activating the MFP autosplitter, click "Settings". Place a checkmark next to every split you want to use.
 
-Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/templates/My%20Friend%20Pedro(2019)%20-%20Any%25.lss).
+Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/My%20Friend%20Pedro%20-%20Any%25%20template.lss).
 
 Make sure you compare against Game Time.
 
