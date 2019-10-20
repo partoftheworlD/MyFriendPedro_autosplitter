@@ -45,7 +45,7 @@ gameTime {
 split {
      if (current.iLevel == 14 ||
         current.iLevel  == 16  ||
-        current.iLevel  == 31  ||
+        current.iLevel  == 30  ||
         current.iLevel  == 41  ||
         current.iLevel  == 43  ||
         current.iLevel  == 52) {
