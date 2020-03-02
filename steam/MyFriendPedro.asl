@@ -1,8 +1,8 @@
-    /*
-    #
-    # Update 5/02/2020 game version 1.03
-    #
-    */
+/*
+#
+# Update 2/03/2020 game version 1.03
+#
+*/
 
 state("My Friend Pedro - Blood Bullets Bananas") {
     int iLevel           : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
@@ -17,43 +17,82 @@ init {
 }
 
 update {
-    if (current.chapterTime > old.chapterTime && current.isLoading > 0){
+    if (current.chapterTime > old.chapterTime && current.isLoading > 0) {
         vars.deltaChapterTime = current.chapterTime - old.chapterTime;     
         vars.totalTime += vars.deltaChapterTime;
     }
 }
 
 gameTime {
-    if (current.chapterTime > old.chapterTime){
+    if (current.chapterTime > old.chapterTime) {
         return TimeSpan.FromSeconds(vars.totalTime);
     }
 }
 
 startup {
+    vars.split_levels = new Dictionary<string,int>{{"TutorialLevel_1", 3},
+                                                  {"TutorialLevel_2", 4},
+                                                  {"TutorialLevel_3", 5},
+                                                  {"OldTownLevel_1", 6},
+                                                  {"OldTownLevel_2", 7},
+                                                  {"OldTownLevel_3", 8},
+                                                  {"OldTownLevel_4", 9},
+                                                  {"OldTownLevel_5", 10},
+                                                  {"OldTownLevel_6", 11},
+                                                  {"OldTownLevel_7", 12},
+                                                  {"OldTownLevel_7_5", 13},
+                                                  {"OldTownLevel_8", 14},
+                                                  {"DistrictNullLevel_Cutscene", 15},
+                                                  {"DistrictNullLevel_1", 16},
+                                                  {"DistrictNullLevel_2", 17},
+                                                  {"DistrictNullLevel_3", 18},
+                                                  {"DistrictNullLevel_4", 19},
+                                                  {"DistrictNullLevel_5", 20},
+                                                  {"DistrictNullLevel_6", 21},
+                                                  {"DistrictNullLevel_7", 22},
+                                                  {"DistrictNullLevel_8", 23},
+                                                  {"DistrictNullLevel_9", 24},
+                                                  {"PedroWorldLevel_1", 25},
+                                                  {"PedroWorldLevel_2", 26},
+                                                  {"PedroWorldLevel_3", 27},
+                                                  {"PedroWorldLevel_4", 28},
+                                                  {"PedroWorldLevel_CutScene", 29},
+                                                  {"SewerLevel_CutScene", 30},
+                                                  {"SewerLevel_1", 31},
+                                                  {"SewerLevel_2", 32},
+                                                  {"SewerLevel_3", 33},
+                                                  {"SewerLevel_4", 34},
+                                                  {"SewerLevel_5", 35},
+                                                  {"SewerLevel_6", 36},
+                                                  {"SewerLevel_7", 37},
+                                                  {"SewerLevel_8", 38},
+                                                  {"SewerLevel_9", 39},
+                                                  {"SewerLevel_CutScene2", 40},
+                                                  {"SewerLevel_10", 41},
+                                                  {"InternetLevel_CutScene", 42},
+                                                  {"InternetLevel_1", 43},
+                                                  {"InternetLevel_2", 44},
+                                                  {"InternetLevel_3", 45},
+                                                  {"InternetLevel_4", 46},
+                                                  {"InternetLevel_5", 47},
+                                                  {"InternetLevel_6", 48},
+                                                  {"InternetLevel_7", 49},
+                                                  {"InternetLevel_8", 50},
+                                                  {"InternetLevel_CutScene2", 51},
+                                                  {"PedroBossFightLevel", 52}};
 
-    settings.Add("StartGroup", true, "Start Timer At");
-    settings.Add("TutorialLevel_start", true, "Tutorial", "StartGroup");
-    settings.Add("OldTownlLevel_start", false, "Old Town", "StartGroup");
-    settings.Add("DistrictNullLevel_start", false, "District Null", "StartGroup");
-    settings.Add("PedroWorldLevel_start", false, "Pedro World", "StartGroup");
-    settings.Add("SewerLevel_start", false, "The Sewer", "StartGroup");
-    settings.Add("InternetLevel_start", false, "The Internet", "StartGroup");
-    settings.Add("PedroBossFightLevel_start", false, "The End", "StartGroup");
-
-    settings.Add("level_splits", true, "Splits");
-
-    vars.levels = new Dictionary<string,string>{{"TutorialLevel_1","Tutorial 1"},
+    vars.levels       = new Dictionary<string,string>{{"TutorialLevel_1","Tutorial 1"},
                                                   {"TutorialLevel_2","Tutorial 2"},
                                                   {"TutorialLevel_3","Tutorial 3"},
-                                                  {"OldTownlLevel_1","Old Town 1"},
-                                                  {"OldTownlLevel_2","Old Town 2"},
-                                                  {"OldTownlLevel_3","Old Town 3"},
-                                                  {"OldTownlLevel_4","Old Town 4"},
-                                                  {"OldTownlLevel_5","Old Town 5"},
-                                                  {"OldTownlLevel_6","Old Town 6"},
-                                                  {"OldTownlLevel_7","Old Town 7"},
-                                                  {"OldTownlLevel_7_5","Old Town Scene with taking bike"},
-                                                  {"OldTownlLevel_8","Old Town 8"},
+                                                  {"OldTownLevel_1","Old Town 1"},
+                                                  {"OldTownLevel_2","Old Town 2"},
+                                                  {"OldTownLevel_3","Old Town 3"},
+                                                  {"OldTownLevel_4","Old Town 4"},
+                                                  {"OldTownLevel_5","Old Town 5"},
+                                                  {"OldTownLevel_6","Old Town 6"},
+                                                  {"OldTownLevel_7","Old Town 7"},
+                                                  {"OldTownLevel_7_5","Old Town Scene with taking bike"},
+                                                  {"OldTownLevel_8","Old Town 8"},
                                                   {"DistrictNullLevel_Cutscene","District Null Cutscene"},
                                                   {"DistrictNullLevel_1","District Null 1"},
                                                   {"DistrictNullLevel_2","District Null 2"},
@@ -92,7 +131,16 @@ startup {
                                                   {"InternetLevel_8","The Internet 8"},
                                                   {"InternetLevel_CutScene2","The Internet Cut Scene with pressing E"},
                                                   {"PedroBossFightLevel","The End (Pedro Boss Fight)"}};
-
+    
+    settings.Add("StartGroup", true, "Start Timer At");
+    settings.Add("TutorialLevel_start", true, "Tutorial", "StartGroup");
+    settings.Add("OldTownLevel_start", false, "Old Town", "StartGroup");
+    settings.Add("DistrictNullLevel_start", false, "District Null", "StartGroup");
+    settings.Add("PedroWorldLevel_start", false, "Pedro World", "StartGroup");
+    settings.Add("SewerLevel_start", false, "The Sewer", "StartGroup");
+    settings.Add("InternetLevel_start", false, "The Internet", "StartGroup");
+    settings.Add("PedroBossFightLevel_start", false, "The End", "StartGroup");
+    settings.Add("level_splits", true, "Splits");    
     foreach (var level in vars.levels) {
         settings.Add(level.Key, true, level.Value, "level_splits");
     };
@@ -100,205 +148,10 @@ startup {
 
 
 split {
-    if(settings["TutorialLevel_1"] && old.iLevel == 3)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["TutorialLevel_2"] && old.iLevel == 4)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["TutorialLevel_3"] && old.iLevel == 5)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_1"] && old.iLevel == 6)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_2"] && old.iLevel == 7)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_3"] && old.iLevel == 8)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_4"] && old.iLevel == 9)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_5"] && old.iLevel == 10)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_6"] && old.iLevel == 11)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_7"] && old.iLevel == 12)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_7_5"] && old.iLevel == 13)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["OldTownlLevel_8"] && old.iLevel == 14)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_Cutscene"] && old.iLevel == 15)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_1"] && old.iLevel == 16)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_2"] && old.iLevel == 17)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_3"] && old.iLevel == 18)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_4"] && old.iLevel == 19)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_5"] && old.iLevel == 20)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_6"] && old.iLevel == 21)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_7"] && old.iLevel == 22)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_8"] && old.iLevel == 23)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["DistrictNullLevel_9"] && old.iLevel == 24)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroWorldLevel_1"] && old.iLevel == 25)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroWorldLevel_2"] && old.iLevel == 26)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroWorldLevel_3"] && old.iLevel == 27)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroWorldLevel_4"] && old.iLevel == 28)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroWorldLevel_CutScene"] && old.iLevel == 29)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_CutScene"] && old.iLevel == 30)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_1"] && old.iLevel == 31)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_2"] && old.iLevel == 32)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_3"] && old.iLevel == 33)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_4"] && old.iLevel == 34)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_5"] && old.iLevel == 35)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_6"] && old.iLevel == 36)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_7"] && old.iLevel == 37)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_8"] && old.iLevel == 38)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_9"] && old.iLevel == 39)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_CutScene2"] && old.iLevel == 40)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["SewerLevel_10"] && old.iLevel == 41)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_CutScene"] && old.iLevel == 42)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_1"] && old.iLevel == 43)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_2"] && old.iLevel == 44)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_3"] && old.iLevel == 45)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_4"] && old.iLevel == 46)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_5"] && old.iLevel == 47)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_6"] && old.iLevel == 48)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_7"] && old.iLevel == 49)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_8"] && old.iLevel == 50)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["InternetLevel_CutScene2"] && old.iLevel == 51)
-    {
-        return current.iLevel != old.iLevel;
-    }
-    if(settings["PedroBossFightLevel"] && old.iLevel == 52)
-    {
-        return current.iLevel != old.iLevel;
+    foreach (var sl in vars.split_levels) {
+        if(settings[sl.Key] && old.iLevel == sl.Value) {
+            return current.iLevel != old.iLevel;
+        }
     }
 }
 
@@ -308,32 +161,25 @@ reset {
 
 start {
     vars.totalTime = 0;
-    if(settings["TutorialLevel_start"])
-    {
+    if(settings["TutorialLevel_start"]) {
         return current.iLevel == 3;
     }
-    if(settings["OldTownlLevel_start"])
-    {
+    if(settings["OldTownLevel_start"]) {
         return current.iLevel == 6;
     }
-    if(settings["DistrictNullLevel_start"])
-    {
+    if(settings["DistrictNullLevel_start"]) {
         return current.iLevel == 16;
     }
-    if(settings["PedroWorldLevel_start"])
-    {
+    if(settings["PedroWorldLevel_start"]) {
         return current.iLevel == 25;
     }
-    if(settings["SewerLevel_start"])
-    {
+    if(settings["SewerLevel_start"]) {
         return current.iLevel == 31;
     }
-    if(settings["InternetLevel_start"])
-    {
+    if(settings["InternetLevel_start"]) {
         return current.iLevel == 43;
     }
-    if(settings["PedroBossFightLevel_start"])
-    {
+    if(settings["PedroBossFightLevel_start"]) {
         return current.iLevel == 52;
     }
 }
