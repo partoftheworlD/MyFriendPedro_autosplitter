@@ -109,8 +109,9 @@ reset {
 }
 
 start {
-    vars.totalTime = 0;
+    vars.totalTime = -1.7;
     if(settings["TutorialLevel_start"]) {
+        vars.totalTime = 0;
         return current.iLevel == 3;
     }
     if(settings["OldTownLevel_start"]) {
