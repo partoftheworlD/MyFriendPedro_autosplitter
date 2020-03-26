@@ -12,7 +12,6 @@ state("My Friend Pedro - Blood Bullets Bananas") {
 }
 
 init {
-    refreshRate           = 60;
     vars.totalTime        = 0;
     vars.deltaChapterTime = 0;
     vars.timeMultiplier   = 1.0;
