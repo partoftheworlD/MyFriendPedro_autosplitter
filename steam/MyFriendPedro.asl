@@ -1,25 +1,36 @@
 /*
 #
-# Update 2/03/2020 game version 1.03
+# Update 26/03/2020 game version 1.03
 #
 */
 
 state("My Friend Pedro - Blood Bullets Bananas") {
-    int iLevel           : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
-    float chapterTime    : "UnityPlayer.dll", 0x14797B8, 0x1654;
-    byte isLoading       : "UnityPlayer.dll" , 0x144BCE5;
+    int iLevel        : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
+    float chapterTime : "UnityPlayer.dll", 0x14797B8, 0x1654;
+    byte isLoading    : "UnityPlayer.dll", 0x144BCE5;
+    bool isFocused    : "mono.dll", 0x264110, 0x688, 0x40, 0x824;
 }
 
 init {
     refreshRate           = 60;
     vars.totalTime        = 0;
     vars.deltaChapterTime = 0;
+    vars.timeMultiplier   = 1.0;
 }
 
 update {
+
     if (current.chapterTime > old.chapterTime && current.isLoading > 0) {
-        vars.deltaChapterTime = current.chapterTime - old.chapterTime;     
-        vars.totalTime += vars.deltaChapterTime;
+        vars.deltaChapterTime = current.chapterTime - old.chapterTime;
+        if(current.isFocused)
+        {
+            vars.timeMultiplier = 4;
+        }
+        else
+        {
+            vars.timeMultiplier = 1.0;
+        }
+        vars.totalTime += vars.deltaChapterTime * vars.timeMultiplier;
     }
 }
 
