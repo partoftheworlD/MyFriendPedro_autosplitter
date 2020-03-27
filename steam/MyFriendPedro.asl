@@ -23,7 +23,7 @@ update {
         vars.deltaChapterTime = current.chapterTime - old.chapterTime;
         if(current.isFocused)
         {
-            vars.timeMultiplier = 4;
+            vars.timeMultiplier = 3.8;
         }
         else
         {
