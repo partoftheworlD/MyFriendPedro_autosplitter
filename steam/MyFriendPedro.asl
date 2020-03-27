@@ -18,12 +18,11 @@ init {
 }
 
 update {
-
     if (current.chapterTime > old.chapterTime && current.isLoading > 0) {
         vars.deltaChapterTime = current.chapterTime - old.chapterTime;
-        if(current.isFocused)
+        if(current.isFocused && vars.deltaChapterTime < 0.01)
         {
-            vars.timeMultiplier = 3.8;
+            vars.timeMultiplier = 3.83046875;
         }
         else
         {
