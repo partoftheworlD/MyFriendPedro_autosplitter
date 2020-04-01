@@ -1,6 +1,6 @@
 /*
 #
-# Update 26/03/2020 game version 1.03
+# Update 01/04/2020 game version 1.03
 #
 */
 
@@ -9,6 +9,7 @@ state("My Friend Pedro - Blood Bullets Bananas") {
     float chapterTime : "UnityPlayer.dll", 0x14797B8, 0x1654;
     byte isLoading    : "UnityPlayer.dll", 0x144BCE5;
     bool isFocused    : "mono.dll", 0x264110, 0x688, 0x40, 0x824;
+    int isMenu        : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 }
 
 init {
@@ -18,7 +19,7 @@ init {
 }
 
 update {
-    if (current.chapterTime > old.chapterTime && current.isLoading > 0) {
+    if (current.chapterTime > old.chapterTime && current.isLoading > 0 && current.isMenu == 0) {
         vars.deltaChapterTime = current.chapterTime - old.chapterTime;
         if(current.isFocused && vars.deltaChapterTime < 0.01)
         {
@@ -118,9 +119,8 @@ reset {
 }
 
 start {
-    vars.totalTime = -1.7;
+    vars.totalTime = 0;
     if(settings["TutorialLevel_start"]) {
-        vars.totalTime = 0;
         return current.iLevel == 3;
     }
     if(settings["OldTownLevel_start"]) {
