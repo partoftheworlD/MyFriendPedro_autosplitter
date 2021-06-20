@@ -1,14 +1,7 @@
-/*
-#
-# Update 30/01/2021 game version 1.03
-#
-*/
-
 state("My Friend Pedro - Blood Bullets Bananas") {
     int iLevel        : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
     float chapterTime : "UnityPlayer.dll", 0x14797B8, 0x1654;
     byte isLoading    : "UnityPlayer.dll", 0x144BCE5;
-    bool isFocused    : "mono.dll", 0x264110, 0x688, 0x40, 0x824;
     int isMenu        : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 }
 
@@ -117,7 +110,7 @@ start {
 }
 
 isLoading {
-    if (current.chapterTime > old.chapterTime && current.isLoading != 0 && current.isMenu == 0) {
+    if (current.chapterTime > old.chapterTime && current.isLoading >= 2 && current.isMenu == 0) {
         return false;
     }
     else {
