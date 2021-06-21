@@ -85,7 +85,6 @@ reset {
 }
 
 start {
-    vars.totalTime = 0;
     if(settings["TutorialLevel_start"]) {
         return current.iLevel == 3;
     }
