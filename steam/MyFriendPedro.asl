@@ -16,7 +16,7 @@ startup {
                                                               {10,Tuple.Create("OldTownLevel_5","Old Town 5")},
                                                               {11,Tuple.Create("OldTownLevel_6","Old Town 6")},
                                                               {12,Tuple.Create("OldTownLevel_7","Old Town 7")},
-                                                              {13,Tuple.Create("OldTownLevel_7_5","Old Town Scene with taking bike")},
+                                                              {13,Tuple.Create("OldTownLevel_7_5","Old Town 7.1 level with taking a bike")},
                                                               {14,Tuple.Create("OldTownLevel_8","Old Town 8")},
                                                               {15,Tuple.Create("DistrictNullLevel_Cutscene","District Null Cutscene")},
                                                               {16,Tuple.Create("DistrictNullLevel_1","District Null 1")},
@@ -43,7 +43,7 @@ startup {
                                                               {37,Tuple.Create("SewerLevel_7","The Sewer 7")},
                                                               {38,Tuple.Create("SewerLevel_8","The Sewer 8")},
                                                               {39,Tuple.Create("SewerLevel_9","The Sewer 9")},
-                                                              {40,Tuple.Create("SewerLevel_CutScene2","The Sewer Cutscene Jumping into train")},
+                                                              {40,Tuple.Create("SewerLevel_CutScene2","The Sewer 9.1 level with jumping into a train")},
                                                               {41,Tuple.Create("SewerLevel_10","The Sewer 10")},
                                                               {42,Tuple.Create("InternetLevel_CutScene","The Internet Cut Scene")},
                                                               {43,Tuple.Create("InternetLevel_1","The Internet 1")},
@@ -54,7 +54,7 @@ startup {
                                                               {48,Tuple.Create("InternetLevel_6","The Internet 6")},
                                                               {49,Tuple.Create("InternetLevel_7","The Internet 7")},
                                                               {50,Tuple.Create("InternetLevel_8","The Internet 8")},
-                                                              {51,Tuple.Create("InternetLevel_CutScene2","The Internet Cut Scene with pressing E")},
+                                                              {51,Tuple.Create("InternetLevel_CutScene2","The Internet 8.1 level with spamming E")},
                                                               {52,Tuple.Create("PedroBossFightLevel","The End (Pedro Boss Fight)")}};
     
     settings.Add("StartGroup", true, "Start Timer At");
@@ -70,7 +70,6 @@ startup {
         settings.Add(level.Value.Item1, true, level.Value.Item2, "level_splits");
     };
 }
-
 
 split {
     foreach (var sl in vars.levels) {
