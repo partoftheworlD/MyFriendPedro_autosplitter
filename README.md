@@ -7,6 +7,12 @@
 Solution: Before run, it is necessary to enter any level and exit. 
 This problem appears due to fact that when you first start level some value that uses timer during loading doesn't work.
 
+* The timer doesn't pausing time after completing a level or opening a menu
+
+Solution: You need to change priority of Livesplit process to a high.
+
+[**How to change process priority**](https://winaero.com/change-process-priority-windows-10/)
+
 # Instructions
 
 Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/My%20Friend%20Pedro%20-%20Any%25%20template.lss).
