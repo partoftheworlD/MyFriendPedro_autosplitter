@@ -103,7 +103,7 @@ start {
 }
 
 isLoading {
-    return !(current.isLoading >= 2 && current.isMenu == 0);
+    return current.isLoading <= 2 && current.isMenu == 1;
 }
 
 exit {
