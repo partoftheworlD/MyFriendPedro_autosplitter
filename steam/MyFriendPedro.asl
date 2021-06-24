@@ -1,6 +1,5 @@
 state("My Friend Pedro - Blood Bullets Bananas") {
     int iLevel        : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
-    float chapterTime : "UnityPlayer.dll", 0x14797B8, 0x1654;
     byte isLoading    : "UnityPlayer.dll", 0x144BCE5;
     int isMenu        : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 }
@@ -72,11 +71,7 @@ startup {
 }
 
 split {
-    foreach (var sl in vars.levels) {
-        if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
-            return current.iLevel != old.iLevel;
-        }
-    }
+    return current.iLevel != old.iLevel;
 }
 
 reset {
@@ -108,12 +103,7 @@ start {
 }
 
 isLoading {
-    if (current.chapterTime > old.chapterTime && current.isLoading >= 2 && current.isMenu == 0) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return !(current.isLoading >= 2 && current.isMenu == 0);
 }
 
 exit {
