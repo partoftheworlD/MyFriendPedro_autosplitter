@@ -1,10 +1,18 @@
 state("My Friend Pedro - Blood Bullets Bananas") {
-    int iLevel        : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
-    byte isLoading    : "UnityPlayer.dll", 0x144BCE5;
-    int isMenu        : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
+    int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
+    float startTime : "mono.dll", 0x264110, 0x688, 0x40, 0x86C;
+    float finishTime: "mono.dll", 0x264110, 0x688, 0x40, 0x870;
+    float timePaused: "mono.dll", 0x264110, 0x688, 0x40, 0x874;
+    float totalTime : "mono.dll", 0x264110, 0x688, 0x40, 0x878;
+    int TotalLevels : "mono.dll", 0x264110, 0x688, 0x38, 0x18;
+    byte isLoading  : "UnityPlayer.dll", 0x144BCE5;
+    int isMenu      : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 }
 
 startup {
+
+    vars.totalTimeB = 0;
+    vars.temp = 0;
     vars.levels = new Dictionary<int, Tuple<string, string>>{ {3, Tuple.Create("TutorialLevel_1","Tutorial 1")},
                                                               {4, Tuple.Create("TutorialLevel_2","Tutorial 2")},
                                                               {5, Tuple.Create("TutorialLevel_3","Tutorial 3")},
@@ -71,7 +79,11 @@ startup {
 }
 
 split {
-    return current.iLevel != old.iLevel;
+    foreach (var sl in vars.levels) {
+        if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
+            return current.iLevel != old.iLevel;
+        }
+    }
 }
 
 reset {
@@ -103,7 +115,16 @@ start {
 }
 
 isLoading {
-    return current.isLoading <= 2 && current.isMenu == 1;
+    return true;
+}
+
+update {
+    vars.totalTimeB = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, (current.iLevel - 2) * 4 + 0x20).Deref<float>(game);
+    vars.totalTimeB = vars.totalTimeB + current.finishTime - current.startTime;
+}
+
+gameTime {
+    return TimeSpan.FromSeconds(vars.totalTimeB);
 }
 
 exit {
