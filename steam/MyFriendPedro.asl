@@ -10,9 +10,6 @@ state("My Friend Pedro - Blood Bullets Bananas") {
 }
 
 startup {
-
-    vars.totalTimeB = 0;
-    vars.temp = 0;
     vars.levels = new Dictionary<int, Tuple<string, string>>{ {3, Tuple.Create("TutorialLevel_1","Tutorial 1")},
                                                               {4, Tuple.Create("TutorialLevel_2","Tutorial 2")},
                                                               {5, Tuple.Create("TutorialLevel_3","Tutorial 3")},
@@ -78,10 +75,22 @@ startup {
     };
 }
 
+init {
+    vars.lastLevelTime = 0;
+    vars.TheTotalTime = 0;
+    vars.levelsTimer = new float[55];
+}
+
 split {
     foreach (var sl in vars.levels) {
         if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
-            return current.iLevel != old.iLevel;
+            if (current.iLevel != old.iLevel) {
+                vars.TheTotalTime = 0;
+                for(int i = 0; i < 55; i++) {
+                    vars.TheTotalTime += vars.levelsTimer[i];
+                }
+                return true;
+            }
         }
     }
 }
@@ -119,12 +128,11 @@ isLoading {
 }
 
 update {
-    vars.totalTimeB = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, (current.iLevel - 2) * 4 + 0x20).Deref<float>(game);
-    vars.totalTimeB = vars.totalTimeB + current.finishTime - current.startTime;
+    vars.levelsTimer[current.iLevel - 1] = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
 }
 
 gameTime {
-    return TimeSpan.FromSeconds(vars.totalTimeB);
+    return TimeSpan.FromSeconds(vars.TheTotalTime);
 }
 
 exit {
