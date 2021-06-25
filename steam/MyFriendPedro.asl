@@ -100,6 +100,7 @@ reset {
 }
 
 start {
+    vars.TheTotalTime = 0;
     if(settings["TutorialLevel_start"]) {
         return current.iLevel == 3;
     }
