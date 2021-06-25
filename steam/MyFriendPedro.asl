@@ -128,7 +128,7 @@ isLoading {
 }
 
 update {
-    vars.levelsTimer[current.iLevel - 1] = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
+    vars.levelsTimer[current.iLevel] = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
 }
 
 gameTime {
