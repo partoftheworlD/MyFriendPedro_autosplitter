@@ -78,7 +78,7 @@ split {
         if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
             if (current.iLevel != old.iLevel) {
                 vars.TheTotalTime = 0;
-                for(int i = 0; i < 55; i++) {
+                for (int i = 0; i < 55; i++) {
                     vars.TheTotalTime += vars.levelsTimer[i];
                 }
                 return true;
@@ -93,6 +93,9 @@ reset {
 
 start {
     vars.TheTotalTime = 0;
+    for (int i = 0; i < 55; i++) {
+        vars.levelsTimer[i] = 0;
+    }
     if(settings["TutorialLevel_start"]) {
         return current.iLevel == 3;
     }
