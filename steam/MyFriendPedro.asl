@@ -1,12 +1,5 @@
 state("My Friend Pedro - Blood Bullets Bananas") {
     int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
-    float startTime : "mono.dll", 0x264110, 0x688, 0x40, 0x86C;
-    float finishTime: "mono.dll", 0x264110, 0x688, 0x40, 0x870;
-    float timePaused: "mono.dll", 0x264110, 0x688, 0x40, 0x874;
-    float totalTime : "mono.dll", 0x264110, 0x688, 0x40, 0x878;
-    int TotalLevels : "mono.dll", 0x264110, 0x688, 0x38, 0x18;
-    byte isLoading  : "UnityPlayer.dll", 0x144BCE5;
-    int isMenu      : "UnityPlayer.dll", 0x144CD38, 0x80, 0x10, 0xAC;
 }
 
 startup {
@@ -76,7 +69,6 @@ startup {
 }
 
 init {
-    vars.lastLevelTime = 0;
     vars.TheTotalTime = 0;
     vars.levelsTimer = new float[55];
 }
