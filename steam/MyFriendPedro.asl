@@ -127,7 +127,7 @@ update {
     for (int i = 0; i < 55; i++) {
             vars.TheTotalTime += vars.levelsTimer[i];
     }
-    if (current.isPaused) {
+    if (current.isPaused || current.iLevel > 1) {
         vars.tempBuffer = vars.TheTotalTime;
     }
 
