@@ -1,5 +1,6 @@
 state("My Friend Pedro - Blood Bullets Bananas") {
     int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
+    bool isPaused   : "mono.dll", 0x264110, 0x688, 0x40, 0x816;
 }
 
 startup {
@@ -77,10 +78,6 @@ split {
     foreach (var sl in vars.levels) {
         if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
             if (current.iLevel != old.iLevel) {
-                vars.TheTotalTime = 0;
-                for (int i = 0; i < 55; i++) {
-                    vars.TheTotalTime += vars.levelsTimer[i];
-                }
                 return true;
             }
         }
@@ -93,6 +90,7 @@ reset {
 
 start {
     vars.TheTotalTime = 0;
+    vars.tempBuffer = 0;
     for (int i = 0; i < 55; i++) {
         vars.levelsTimer[i] = 0;
     }
@@ -125,10 +123,18 @@ isLoading {
 
 update {
     vars.levelsTimer[current.iLevel] = new DeepPointer("mono.dll", 0x264110, 0x688, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
+    vars.TheTotalTime = 0;
+    for (int i = 0; i < 55; i++) {
+            vars.TheTotalTime += vars.levelsTimer[i];
+    }
+    if (current.isPaused) {
+        vars.tempBuffer = vars.TheTotalTime;
+    }
+
 }
 
 gameTime {
-    return TimeSpan.FromSeconds(vars.TheTotalTime);
+    return TimeSpan.FromSeconds(vars.tempBuffer);
 }
 
 exit {
