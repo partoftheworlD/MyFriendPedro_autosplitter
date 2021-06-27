@@ -6,7 +6,7 @@
 
 # Instructions
 
-Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/My%20Friend%20Pedro%20-%20Any%25%20template.lss). Also, you have to add 1 extra split on top, it is always zero, so it will not affect the time in any way. 
+Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/My%20Friend%20Pedro%20-%20Any%25%20template.lss). 
 
 Make sure you compare against Game Time.
 
