@@ -71,7 +71,7 @@ startup {
 
 init {
     vars.TheTotalTime = 0;
-    vars.levelsTimer = new float[53];
+    vars.levelsTimer = new float[55];
 }
 
 split {
