@@ -1,9 +1,9 @@
-state("My Friend Pedro - Blood Bullets Bananas", "Steam v1.3") {
+state("My Friend Pedro - Blood Bullets Bananas", "Steam v1.03") {
     int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
     bool isPaused   : "mono.dll", 0x264110, 0x688, 0x40, 0x816;
 }
 
-state("My Friend Pedro - Blood Bullets Bananas", "GOG v1.3") {
+state("My Friend Pedro - Blood Bullets Bananas", "GOG v1.03") {
     int iLevel      : "mono.dll", 0x264110, 0x70, 0x18, 0x78;
     bool isPaused   : "mono.dll", 0x264110, 0x618, 0x40, 0x816;
 }
@@ -83,11 +83,11 @@ init {
     long AsmCsSize = new FileInfo(AsmCsPath).Length;
     switch (AsmCsSize) {
         case 419840:
-            version = "GOG v1.3";
+            version = "GOG v1.03";
             vars.LTArrayOffset = 0x618;
             break;
         case 447488:
-            version = "Steam v1.3";
+            version = "Steam v1.03";
             vars.LTArrayOffset = 0x688;
             break;
     }
