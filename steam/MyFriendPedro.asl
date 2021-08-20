@@ -143,10 +143,9 @@ isLoading {
 }
 
 update {
-
     vars.levelsTimer[current.iLevel] = new DeepPointer("mono.dll", 0x264110, vars.LTArrayOffset, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
     vars.TheTotalTime = 0;
-    for (int i = 0; i < 55; i++) {
+    for (int i = 3; i < 52; i++) {
             vars.TheTotalTime += vars.levelsTimer[i];
     }
     if (current.isPaused || current.iLevel > 1) {
