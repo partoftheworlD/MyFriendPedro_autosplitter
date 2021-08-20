@@ -86,7 +86,7 @@ init {
             version = "GOG v1.03";
             vars.LTArrayOffset = 0x618;
             break;
-        case 1141248:
+        case 1142784:
             version = "Steam v1.03";
             vars.LTArrayOffset = 0x688;
             break;
