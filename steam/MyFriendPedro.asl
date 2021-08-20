@@ -90,6 +90,8 @@ init {
             version = "Steam v1.03";
             vars.LTArrayOffset = 0x688;
             break;
+        default:
+            print("Unsupported version"); break;
     }
 }
 
