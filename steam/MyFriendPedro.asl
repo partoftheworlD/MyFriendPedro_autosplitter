@@ -91,7 +91,7 @@ init {
             vars.LTArrayOffset = 0x688;
             break;
         default:
-            print("Unsupported version"); break;
+            version = "Unsupported"; break;
     }
 }
 
