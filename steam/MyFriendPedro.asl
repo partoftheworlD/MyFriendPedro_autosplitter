@@ -112,7 +112,7 @@ reset {
 start {
     vars.TheTotalTime = 0;
     vars.tempBuffer = 0;
-    for (int i = 0; i < 55; i++) {
+    for (int i = 3; i < 52; i++) {
         vars.levelsTimer[i] = 0;
     }
     if(settings["TutorialLevel_start"]) {
