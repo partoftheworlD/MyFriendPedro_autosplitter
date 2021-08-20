@@ -79,14 +79,14 @@ init {
     vars.tempBuffer = 0;
     vars.LTArrayOffset = 0;
     vars.levelsTimer = new float[55];
-    string AsmCsPath = Path.GetFullPath(Path.Combine(game.MainModule.FileName,@"..\My Friend Pedro - Blood Bullets Bananas_Data\Managed\Assembly-CSharp.dll"));
+    string AsmCsPath = Path.GetFullPath(Path.Combine(game.MainModule.FileName,@"..\My Friend Pedro - Blood Bullets Bananas_Data\Managed\Assembly-CSharp-firstpass.dll"));
     long AsmCsSize = new FileInfo(AsmCsPath).Length;
     switch (AsmCsSize) {
-        case 419840:
+        case 792576:
             version = "GOG v1.03";
             vars.LTArrayOffset = 0x618;
             break;
-        case 447488:
+        case 1141248:
             version = "Steam v1.03";
             vars.LTArrayOffset = 0x688;
             break;
