@@ -6,9 +6,7 @@
 
 # Instructions
 
-Afterwards, create your splits/segments. Name them anything you want. Or use [template split file](https://github.com/partoftheworlD/MyFriendPedro_autosplitter/blob/master/My%20Friend%20Pedro%20-%20Any%25%20template.lss). 
-
-Make sure you compare against Game Time.
+[![How to setup autosplitter](https://img.youtube.com/vi/DpknSPdyots/0.jpg)](https://www.youtube.com/watch?v=DpknSPdyots)
 
 Any problems? Reach out to me.
 
