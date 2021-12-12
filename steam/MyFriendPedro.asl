@@ -148,7 +148,7 @@ update {
     for (int i = 3; i < 52; i++) {
             vars.TheTotalTime += vars.levelsTimer[i];
     }
-    if (current.isPaused || current.iLevel > 1) {
+    if (!current.isPaused || current.iLevel > 1) {
         vars.tempBuffer = vars.TheTotalTime;
     }
 
