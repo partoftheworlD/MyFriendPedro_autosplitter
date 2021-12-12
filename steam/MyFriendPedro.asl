@@ -1,11 +1,9 @@
 state("My Friend Pedro - Blood Bullets Bananas", "Steam v1.03") {
     int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
-    bool isPaused   : "mono.dll", 0x264110, 0x688, 0x40, 0x816;
 }
 
 state("My Friend Pedro - Blood Bullets Bananas", "GOG v1.03") {
     int iLevel      : "mono.dll", 0x264110, 0x70, 0x18, 0x78;
-    bool isPaused   : "mono.dll", 0x264110, 0x618, 0x40, 0x816;
 }
 
 startup {
@@ -75,8 +73,6 @@ startup {
 }
 
 init {
-    vars.TheTotalTime = 0;
-    vars.tempBuffer = 0;
     vars.LTArrayOffset = 0;
     vars.levelsTimer = new float[55];
     string AsmCsPath = Path.GetFullPath(Path.Combine(game.MainModule.FileName,@"..\My Friend Pedro - Blood Bullets Bananas_Data\Managed\Assembly-CSharp-firstpass.dll"));
@@ -105,8 +101,7 @@ reset {
 
 start {
     vars.TheTotalTime = 0;
-    vars.tempBuffer = 0;
-    for (int i = 3; i < 52; i++) {
+    for (int i = 0; i <= 54; i++) {
         vars.levelsTimer[i] = 0;
     }
     if(settings["TutorialLevel_start"]) {
@@ -137,19 +132,14 @@ isLoading {
 }
 
 update {
-    vars.levelsTimer[current.iLevel] = new DeepPointer("mono.dll", 0x264110, vars.LTArrayOffset, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
+    vars.levelsTimer[current.iLevel] = new DeepPointer(
+        "mono.dll", 0x264110, vars.LTArrayOffset, 0x38, current.iLevel * 4 + 0x20).Deref<float>(game);
     vars.TheTotalTime = 0;
-    for (int i = 3; i < 52; i++) {
-            vars.TheTotalTime += vars.levelsTimer[i];
-    }
-    if (!current.isPaused || current.iLevel > 1) {
-        vars.tempBuffer = vars.TheTotalTime;
-    }
-
+    vars.TheTotalTime = ((float[])vars.levelsTimer).Sum();
 }
 
 gameTime {
-    return TimeSpan.FromSeconds(vars.tempBuffer);
+    return TimeSpan.FromSeconds(vars.TheTotalTime);
 }
 
 exit {
