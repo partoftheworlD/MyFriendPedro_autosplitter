@@ -96,13 +96,7 @@ init {
 }
 
 split {
-    foreach (var sl in vars.levels) {
-        if(settings[sl.Value.Item1] && old.iLevel == sl.Key) {
-            if (current.iLevel != old.iLevel) {
-                return true;
-            }
-        }
-    }
+    return old.iLevel != current.iLevel && settings[vars.levels[old.iLevel].Item1];
 }
 
 reset {
