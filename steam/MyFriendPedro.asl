@@ -1,8 +1,8 @@
-state("My Friend Pedro - Blood Bullets Bananas", "Steam v1.03") {
+state("My Friend Pedro - Blood Bullets Bananas", "Steam") {
     int iLevel      : "mono.dll", 0x264110, 0xA8, 0x18, 0x78;
 }
 
-state("My Friend Pedro - Blood Bullets Bananas", "GOG v1.03") {
+state("My Friend Pedro - Blood Bullets Bananas", "Non-Steam") {
     int iLevel      : "mono.dll", 0x264110, 0x70, 0x18, 0x78;
 }
 
@@ -75,19 +75,14 @@ startup {
 init {
     vars.LTArrayOffset = 0;
     vars.levelsTimer = new float[55];
-    string AsmCsPath = Path.GetFullPath(Path.Combine(game.MainModule.FileName,@"..\My Friend Pedro - Blood Bullets Bananas_Data\Managed\Assembly-CSharp-firstpass.dll"));
-    long AsmCsSize = new FileInfo(AsmCsPath).Length;
-    switch (AsmCsSize) {
-        case 792576:
-            version = "GOG v1.03";
-            vars.LTArrayOffset = 0x618;
-            break;
-        case 1142784:
-            version = "Steam v1.03";
-            vars.LTArrayOffset = 0x688;
-            break;
-        default:
-            version = "Unsupported"; break;
+    try {
+        modules.Where(m => m.ModuleName == "steam_api64.dll").First();
+        version = "Steam";
+        vars.LTArrayOffset = 0x688;
+    }
+    catch {
+        version = "Non-Steam";
+        vars.LTArrayOffset = 0x618;
     }
 }
 
