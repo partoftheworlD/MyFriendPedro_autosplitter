@@ -76,7 +76,7 @@ init {
     vars.LTArrayOffset = 0;
     vars.levelsTimer = new float[55];
     try {
-        modules.Where(m => m.ModuleName == "steam_api64.dll").First();
+        modules.Where(m => m.ModuleName == "steamclient64.dll").First();
         version = "Steam";
         vars.LTArrayOffset = 0x688;
     }
