@@ -3,7 +3,7 @@
 
 # Known bugs:
 
-* **None**
+* You must run game before starting Livesplit, as autosplitter determines the version of the game by loaded steamclient64.dll module
 
 # Instruction
 
